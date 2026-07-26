@@ -1,29 +1,29 @@
 name: Test and Build
-on: #trigger events
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
- 
-jobs: 
-    lint-and-typecheck: #job name
-        runs-on: ubuntu-latest   #runner environment
-        steps: 
-            - name: Checkout code   #1st step
-                uses: actions/checkout@v7
-            
-            - name: use node.js      #2nd step
-                uses: actions/setup-node@v3
-                with:
-                    node-version: 22
-            
-            - name: Install dependencies      #3rd step
-                run: npm ci    #clean install dependencies based on package-lock.json
 
-            - name: Run Lint #4th step
-                run: npm run lint  #check code for linting errors. linting errors is a code quality tool that checks for stylistic errors in code
+on:
+  push:
+    branches:
+      - main
 
+  pull_request:
+    branches:
+      - main
 
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci  #clean install dependencies based on package-lock.json
+
+      - name: Run Lint
+        run: npm run lint     #check code for linting errors. linting errors is a code quality tool that checks for stylistic errors in code

@@ -30,6 +30,9 @@ jobs:
 
   
   Deploy-to-AWS:
+    needs: lint-and-typecheck  # first job must complete successfully before this job can run
+    name: Deploy to AWS
+
     runs-on: ubuntu-latest
 
     steps:
@@ -49,5 +52,5 @@ jobs:
       - name: Build project
         run: npm run build  #build the project
       
-      - name: Deploy to aws
+      - name: Deploy to AWS
         run: echo "Deploying to AWS..."  #placeholder for actual deployment command

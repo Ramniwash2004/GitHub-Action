@@ -57,6 +57,10 @@ function App() {
     return true;
   });
 
+
+  const age: number = "Hello";
+
+  
   const tasksLeft = todos.filter((t) => !t.completed).length;
 
   return (

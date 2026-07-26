@@ -27,3 +27,27 @@ jobs:
 
       - name: Run Lint
         run: npm run lint     #check code for linting errors. linting errors is a code quality tool that checks for stylistic errors in code
+
+  
+  Deploy-to-AWS:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci  
+  
+      # Linting already done in previous job, so we can skip it here
+
+      - name: Build project
+        run: npm run build  #build the project
+      
+      - name: Deploy to aws
+        run: echo "Deploying to AWS..."  #placeholder for actual deployment command
